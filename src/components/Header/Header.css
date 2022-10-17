@@ -20,3 +20,8 @@
 .header a:hover{
     color: mediumseagreen;
 }
+
+.btn-logOut{
+    margin-left: 10px;
+    cursor: pointer;
+}

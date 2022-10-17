@@ -2,39 +2,56 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import About from './components/About/About';
 import Inventory from './components/Inventory/Inventory';
+import Login from './components/Login/Login';
 import Orders from './components/Orders/Orders';
+import Shipping from './components/Shipping/Shipping';
 import Shop from './components/Shop/Shop';
+import SignUp from './components/SignUp/SignUp';
 import Main from './layouts/Main';
 import { productsAndCartLoader } from './loaders/productsAndCartLoader';
+import PrivateRoute from './Routes/PrivateRoute';
 
 function App() {
-  const router=createBrowserRouter([
+  const router = createBrowserRouter([
     {
-      path:'/',
-      element:<Main></Main>,
-      children:[
+      path: '/',
+      element: <Main></Main>,
+      children: [
         {
-          path:'/',
-          loader:()=>fetch('products.json') ,
-          element:<Shop></Shop>
+          path: '/',
+          loader: () => fetch('products.json'),
+          element: <Shop></Shop>
         },
         {
-          path:'/orders',
-          loader:productsAndCartLoader,
-          element:<Orders></Orders>
+          path: '/orders',
+          loader: productsAndCartLoader,
+          element: <Orders></Orders>
         },
         {
-          path:'/inventory',
-          element:<Inventory></Inventory>
-          
+          path: '/inventory',
+          element: <PrivateRoute><Inventory></Inventory></PrivateRoute>
+
         },
         {
-          path:'about',
-          element:<About></About>
+          path: '/shipping',
+          element: <PrivateRoute><Shipping></Shipping></PrivateRoute>
+
+        },
+        {
+          path: 'about',
+          element: <About></About>
+        },
+        {
+          path: 'login',
+          element: <Login></Login>
+        },
+        {
+          path: 'SignUp',
+          element: <SignUp></SignUp>
         },
       ]
     },
-   
+
   ])
   return (
     <div >
