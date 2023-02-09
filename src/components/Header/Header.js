@@ -5,11 +5,11 @@ import logo from '../../images/Logo.svg'
 import { AuthContext } from '../contexts/UserContext';
 import './Header.css'
 const Header = () => {
-    const { user,logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     return (
         <nav className='header'>
-            <img src={logo} alt="" />
-            <div>
+            <img className='logo' src={logo} alt="" />
+            <div className='nav-bar'>
                 <Link to="/">Shop</Link>
                 <Link to="/orders">Orders</Link>
                 <Link to="/inventory">Inventory</Link>
@@ -19,7 +19,7 @@ const Header = () => {
                         <button className='btn-logOut' onClick={logOut}>logOut</button>
                         :
                         <>
-                            <Link to="/login">Login</Link>
+                            <Link className='header-right' to="/login">Login</Link>
                             <Link to="/signup">Signup</Link>
                         </>
 
@@ -31,3 +31,53 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+// import React, { useContext } from 'react';
+// import { Container, Nav, Navbar } from 'react-bootstrap';
+// // import logo from '../../images/Logo.svg'
+// import { Link } from 'react-router-dom';
+// import { AuthContext } from '../contexts/UserContext';
+
+// const Header = () => {
+//     const { user, logOut } = useContext(AuthContext)
+
+//     // const handleLogout = () => {
+//     //     logOut()
+//     //         .then(() => { })
+//     //         .catch(error => console.error(error.message))
+//     // }
+//     return (
+//         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+//             <Container>
+//                 <Navbar.Brand as={Link} to={"/"}>Maisha's World</Navbar.Brand>
+//                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+//                 <Navbar.Collapse id="responsive-navbar-nav">
+//                     <Nav className="me-auto bg-dark text-white">
+//                     <Nav.Link to="/">Shop</Nav.Link>
+//                 <Nav.Link to="/orders">Orders</Nav.Link>
+//                  <Nav.Link to="/inventory">Inventory</Nav.Link>
+//                  <Nav.Link to="/about">About</Nav.Link>
+
+//                     </Nav>
+//                     <Nav>
+
+//                         {
+//                             user?.uid ?
+//                                                     <button className='btn-logOut' onClick={logOut}>logOut</button>
+//                                                    :
+//                                                    <>
+//                                                        <Nav.Link className='header-right' to="/login">Login</Nav.Link>
+//                                                        <Nav.Link to="/signup">Signup</Nav.Link>
+//                                                     </>
+//                         }
+
+//                     </Nav>
+//                 </Navbar.Collapse>
+//             </Container>
+//         </Navbar>
+//     );
+// };
+
+// export default Header;
